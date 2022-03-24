@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: sql-ex
+
+  liquibase:
+    enabled: false
+
+springdoc:
+  paths-to-match: /**
+  show-actuator: true
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'

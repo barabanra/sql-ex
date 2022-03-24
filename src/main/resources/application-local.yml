@@ -1,0 +1,10 @@
+db:
+  datasource:
+    database: postgres
+    username: postgres
+    password: postgres
+    jdbcUrl: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+
+logging:
+  config: config/logback-spring-local.xml

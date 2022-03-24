@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: sql-ex
+
+  liquibase:
+    change-log: db/changelog/db.changelog-master.yml
+
+db:
+  datasource:
+    database: postgres
+    username: ${POSTGRES_TEST_CONTAINER_USERNAME}
+    password: ${POSTGRES_TEST_CONTAINER_PASSWORD}
+    jdbcUrl: ${POSTGRES_TEST_CONTAINER_URL}
+    driver-class-name: org.postgresql.Driver

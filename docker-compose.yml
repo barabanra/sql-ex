@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  postgres-sql-ex:
+    image: postgres:13.6-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_PASSWORD: "postgres"
