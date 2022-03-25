@@ -21,6 +21,7 @@
         <jooq.version>3.16.5</jooq.version>
         <org.testcontainers.version>1.16.3</org.testcontainers.version>
         <liquibase.version>4.9.0</liquibase.version>
+        <spring-cloud.version>2021.0.1</spring-cloud.version>
 
         <postgres.url>${app.postgres.url}</postgres.url>
         <postgres.username>${app.postgres.username}</postgres.username>
@@ -131,6 +132,11 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-spring-jaeger-cloud-starter</artifactId>
+            <version>3.3.1</version>
+        </dependency>
         <!--docs-->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -163,6 +169,18 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

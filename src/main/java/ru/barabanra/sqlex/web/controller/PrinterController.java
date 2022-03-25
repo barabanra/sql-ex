@@ -16,7 +16,7 @@ import ru.barabanra.sqlex.service.PrinterService;
 import java.util.List;
 
 @RestController
-@Tag(name = "Принтеры")
+@Tag(name = "Printers")
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/printers")
 public class PrinterController {

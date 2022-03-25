@@ -9,6 +9,7 @@
         </layout>
     </appender>
 
-    <logger name="ru.barabanra.sqlex.SqlExApplication" level="info" additivity="false"><appender-ref ref="Console" /></logger>
-    <root level="error"><appender-ref ref="Console" /></root>
+    <logger name="ru.barabanra.sqlex.SqlExApplication" level="INFO" additivity="false"><appender-ref ref="Console" /></logger>
+    <logger name="ru.barabanra.sqlex.web.filter.RequestResponseLoggingFilter" level="DEBUG" additivity="false"><appender-ref ref="Console" /></logger>
+    <root level="ERROR"><appender-ref ref="Console" /></root>
 </configuration>

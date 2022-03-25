@@ -15,7 +15,7 @@ import ru.barabanra.sqlex.service.ProductService;
 import java.util.List;
 
 @RestController
-@Tag(name = "Продукты")
+@Tag(name = "Products")
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/products")
 public class ProductController {

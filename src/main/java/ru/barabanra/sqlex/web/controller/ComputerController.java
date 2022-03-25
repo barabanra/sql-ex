@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "Компьютеры")
+@Tag(name = "Computers")
 @RequestMapping("/api/v1/computers")
 public class ComputerController {
 
