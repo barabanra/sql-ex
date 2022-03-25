@@ -1,0 +1,44 @@
+[
+  {
+    "code": 1,
+    "model": "1276",
+    "color": "n",
+    "type": "Laser",
+    "price": 400.00
+  },
+  {
+    "code": 2,
+    "model": "1433",
+    "color": "y",
+    "type": "Jet",
+    "price": 270.00
+  },
+  {
+    "code": 3,
+    "model": "1434",
+    "color": "y",
+    "type": "Jet",
+    "price": 290.00
+  },
+  {
+    "code": 4,
+    "model": "1401",
+    "color": "n",
+    "type": "Matrix",
+    "price": 150.00
+  },
+  {
+    "code": 5,
+    "model": "1408",
+    "color": "n",
+    "type": "Matrix",
+    "price": 270.00
+  },
+  {
+    "code": 6,
+    "model": "1288",
+    "color": "n",
+    "type": "Laser",
+    "price": 400.00
+  }
+]

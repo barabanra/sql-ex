@@ -13,3 +13,7 @@ mvn jooq-codegen:generate -Dapp.postgres.url='jdbc:postgresql://localhost:5432/'
 ***Swagger***
 
 http://localhost:8080/swagger-ui/index.html#/
+
+***Grafana***
+
+http://localhost:3000/?orgId=1

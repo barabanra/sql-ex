@@ -25,7 +25,7 @@ public class ComputerController {
     private final ComputerService computerService;
     private final ComputerMapper computerMapper;
 
-    @Operation(description = "Получение компьютеров по фильтру")
+    @Operation(description = "Получение компьютеров")
     @GetMapping
     public List<ComputerResponseDto> findBy(@RequestParam(name = "priceLessThan") BigDecimal priceLessThan,
                                             @RequestParam(name = "persistenceType") PersistenceType persistenceType) {

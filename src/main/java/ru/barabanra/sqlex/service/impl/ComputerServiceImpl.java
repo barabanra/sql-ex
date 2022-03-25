@@ -1,47 +1,48 @@
 package ru.barabanra.sqlex.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.barabanra.sqlex.dto.properties.PersistenceType;
 import ru.barabanra.sqlex.dto.service.ComputerDto;
 import ru.barabanra.sqlex.mapper.ComputerMapper;
-import ru.barabanra.sqlex.persistence.entity.jpa.ComputerJpaEntity;
-import ru.barabanra.sqlex.persistence.entity.template.ComputerTemplateEntity;
-import ru.barabanra.sqlex.persistence.repository.ComputerJooqRepository;
-import ru.barabanra.sqlex.persistence.repository.ComputerJpaRepository;
-import ru.barabanra.sqlex.persistence.repository.ComputerTemplateRepository;
+import ru.barabanra.sqlex.persistence.entity.ComputerEntity;
+import ru.barabanra.sqlex.persistence.repository.ComputerRepository;
 import ru.barabanra.sqlex.service.ComputerService;
-import ru.barabanra.sqlex.tables.records.PcRecord;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class ComputerServiceImpl implements ComputerService {
 
     private final ComputerMapper computerMapper;
-    private final ComputerTemplateRepository computerTemplateRepository;
-    private final ComputerJpaRepository computerJpaRepository;
-    private final ComputerJooqRepository computerJooqRepository;
+    private final Map<PersistenceType, ComputerRepository> computerRepositoryMap;
+
+    public ComputerServiceImpl(ComputerMapper computerMapper,
+                               List<ComputerRepository> computerRepositories) {
+        this.computerMapper = computerMapper;
+        this.computerRepositoryMap = buildComputerMap(computerRepositories);
+    }
 
     @Override
     public List<ComputerDto> findByPriceLessThan(PersistenceType persistenceType,
                                                  BigDecimal priceLessThan) {
-        if (persistenceType.isTemplate()) {
-            List<ComputerTemplateEntity> byPriceLessThan = computerTemplateRepository.findAllByPriceLessThanEqual(priceLessThan);
-            return computerMapper.mapTemplate(byPriceLessThan);
+        ComputerRepository computerRepository = computerRepositoryMap.get(persistenceType);
+        if (computerRepository == null) {
+            return new ArrayList<>();
+
         }
-        if (persistenceType.isJpa()) {
-            List<ComputerJpaEntity> byPriceLessThan = computerJpaRepository.findAllByPriceLessThanEqual(priceLessThan);
-            return computerMapper.mapJpa(byPriceLessThan);
-        }
-        if (persistenceType.isJooq()) {
-            List<PcRecord> byPriceLessThan = computerJooqRepository.findAllByPriceLessThanEqual(priceLessThan);
-            return computerMapper.mapJooq(byPriceLessThan);
-        }
-        return new ArrayList<>();
+        List<ComputerEntity> allBy = computerRepository.findAllBy(priceLessThan);
+        return computerMapper.map(allBy);
+    }
+
+    private Map<PersistenceType, ComputerRepository> buildComputerMap(List<ComputerRepository> computerRepositories) {
+        return computerRepositories
+                .stream()
+                .collect(Collectors.toMap(ComputerRepository::getType, Function.identity()));
     }
 
 }

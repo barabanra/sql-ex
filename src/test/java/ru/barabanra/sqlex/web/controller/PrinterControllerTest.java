@@ -13,6 +13,7 @@ import ru.barabanra.sqlex.config.PostgresTestContainerRule;
 import ru.barabanra.sqlex.config.TestUtils;
 import ru.barabanra.sqlex.dto.properties.PersistenceType;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -20,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Testcontainers
 @AutoConfigureMockMvc
 @Import(TestUtils.class)
-public class ComputerControllerTest {
+public class PrinterControllerTest {
 
     @Container
     private final static PostgresTestContainerRule testContainer = PostgresTestContainerRule.getInstance();
@@ -31,17 +32,16 @@ public class ComputerControllerTest {
     private TestUtils testUtils;
 
     @Test
-    public void findByPriceLessThanTest() throws Exception {
-        findByPriceLessThanTest(PersistenceType.JPA);
-        findByPriceLessThanTest(PersistenceType.TEMPLATE);
-        findByPriceLessThanTest(PersistenceType.JOOQ);
+    public void findAllTest() throws Exception {
+        findAllTest(PersistenceType.JPA);
+        findAllTest(PersistenceType.TEMPLATE);
+        findAllTest(PersistenceType.JOOQ);
     }
 
-    public void findByPriceLessThanTest(PersistenceType persistenceType) throws Exception {
-        String response = testUtils.getFileAsString("/json/response/computerFindByPriceLessThanTest.json");
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/computers"
-                + "?priceLessThan=500"
-                + "&persistenceType=" + persistenceType))
+    public void findAllTest(PersistenceType persistenceType) throws Exception {
+        String response = testUtils.getFileAsString("/json/response/printerFindAllTest.json");
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/printers"
+                + "?persistenceType=" + persistenceType))
                 .andExpect(status().isOk())
                 .andExpect(content().json(response));
     }

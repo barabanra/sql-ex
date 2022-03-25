@@ -1,6 +1,19 @@
 version: '3'
 
 services:
+
+  prometheus-sql-ex:
+    image: prom/prometheus
+    ports:
+    - 9090:9090
+    volumes:
+    - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana-sql-ex:
+    image: grafana/grafana
+    ports:
+    - 3000:3000
+
   postgres-sql-ex:
     image: postgres:13.6-alpine
     ports:
