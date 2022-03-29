@@ -23,7 +23,7 @@ public class ProductJooqRepository implements ProductRepository {
     @Override
     public List<ProductEntity> findALLBy(ProductFilter filter) {
         return dslContext.selectFrom(Product.PRODUCT)
-                .where(Product.PRODUCT.TYPE.eq(filter.getType()))
+                .where(Product.PRODUCT.TYPE.eq(filter.getType().name()))
                 .fetchInto(Product.PRODUCT)
                 .stream()
                 .map(productMapper::mapEntityFromJooq)

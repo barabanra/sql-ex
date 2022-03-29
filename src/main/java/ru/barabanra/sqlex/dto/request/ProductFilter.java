@@ -8,6 +8,6 @@ public class ProductFilter {
 
     private PersistenceType persistenceType;
 
-    private String type;
+    private ProductType type;
 
 }

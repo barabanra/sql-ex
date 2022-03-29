@@ -21,3 +21,12 @@ http://localhost:3000
 Jaeger
 ``
 http://localhost:16686
+---
+``
+todo
+``
+````
+graylog
+docker, app limits
+stress testing 
+````

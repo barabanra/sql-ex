@@ -2,6 +2,11 @@ spring:
   application:
     name: sql-ex
 
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+
   liquibase:
     enabled: false
 

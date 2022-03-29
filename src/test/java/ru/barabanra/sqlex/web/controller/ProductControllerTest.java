@@ -13,7 +13,6 @@ import ru.barabanra.sqlex.config.PostgresTestContainerRule;
 import ru.barabanra.sqlex.config.TestUtils;
 import ru.barabanra.sqlex.dto.properties.PersistenceType;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

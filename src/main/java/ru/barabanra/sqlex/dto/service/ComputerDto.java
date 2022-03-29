@@ -2,6 +2,8 @@ package ru.barabanra.sqlex.dto.service;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class ComputerDto {
 
@@ -10,5 +12,9 @@ public class ComputerDto {
     private Integer speed;
 
     private Integer hd;
+
+    private BigDecimal price;
+
+    private String cd;
 
 }

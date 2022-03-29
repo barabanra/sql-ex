@@ -2,6 +2,8 @@ package ru.barabanra.sqlex.persistence.entity;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class ComputerEntity {
 
@@ -10,5 +12,9 @@ public class ComputerEntity {
     private Integer speed;
 
     private Integer hd;
+
+    private BigDecimal price;
+
+    private String cd;
 
 }

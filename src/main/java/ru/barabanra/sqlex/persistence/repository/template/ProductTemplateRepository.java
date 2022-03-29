@@ -26,7 +26,7 @@ public class ProductTemplateRepository implements ProductRepository {
     public List<ProductEntity> findALLBy(ProductFilter filter) {
         return jdbcTemplate.query(
                 "SELECT model, maker, type from PRODUCT WHERE type = :type",
-                Collections.singletonMap("type", filter.getType()),
+                Collections.singletonMap("type", filter.getType().name()),
                 new BeanPropertyRowMapper<>(ProductTemplateEntity.class))
                 .stream()
                 .map(productMapper::map)

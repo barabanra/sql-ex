@@ -2,13 +2,13 @@ package ru.barabanra.sqlex.service.impl;
 
 import org.springframework.stereotype.Service;
 import ru.barabanra.sqlex.dto.properties.PersistenceType;
+import ru.barabanra.sqlex.dto.request.ComputerFilter;
 import ru.barabanra.sqlex.dto.service.ComputerDto;
 import ru.barabanra.sqlex.mapper.ComputerMapper;
 import ru.barabanra.sqlex.persistence.entity.ComputerEntity;
 import ru.barabanra.sqlex.persistence.repository.ComputerRepository;
 import ru.barabanra.sqlex.service.ComputerService;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,14 +28,12 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public List<ComputerDto> findByPriceLessThan(PersistenceType persistenceType,
-                                                 BigDecimal priceLessThan) {
-        ComputerRepository computerRepository = computerRepositoryMap.get(persistenceType);
+    public List<ComputerDto> findByPriceLessThan(ComputerFilter computerFilter) {
+        ComputerRepository computerRepository = computerRepositoryMap.get(computerFilter.getPersistenceType());
         if (computerRepository == null) {
             return new ArrayList<>();
-
         }
-        List<ComputerEntity> allBy = computerRepository.findAllBy(priceLessThan);
+        List<ComputerEntity> allBy = computerRepository.findAllBy(computerFilter);
         return computerMapper.map(allBy);
     }
 

@@ -23,4 +23,6 @@ public class ComputerJpaEntity {
 
     private BigDecimal price;
 
+    private String cd;
+
 }

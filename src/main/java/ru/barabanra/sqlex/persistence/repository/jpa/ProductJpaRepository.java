@@ -19,7 +19,7 @@ public interface ProductJpaRepository extends JpaRepository<ProductJpaEntity, St
 
     @Override
     default List<ProductEntity> findALLBy(ProductFilter filter) {
-        List<ProductJpaEntity> allBy = findAllByTypeEquals(filter.getType());
+        List<ProductJpaEntity> allBy = findAllByTypeEquals(filter.getType().name());
         return productMapper.mapEntity(allBy);
     }
 

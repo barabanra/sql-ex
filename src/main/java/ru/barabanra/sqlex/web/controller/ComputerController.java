@@ -5,15 +5,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.barabanra.sqlex.dto.properties.PersistenceType;
+import ru.barabanra.sqlex.dto.request.ComputerFilter;
 import ru.barabanra.sqlex.dto.response.ComputerResponseDto;
 import ru.barabanra.sqlex.dto.service.ComputerDto;
 import ru.barabanra.sqlex.mapper.ComputerMapper;
 import ru.barabanra.sqlex.service.ComputerService;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -27,9 +25,8 @@ public class ComputerController {
 
     @Operation(description = "Получение компьютеров")
     @GetMapping
-    public List<ComputerResponseDto> findBy(@RequestParam(name = "priceLessThan") BigDecimal priceLessThan,
-                                            @RequestParam(name = "persistenceType") PersistenceType persistenceType) {
-        List<ComputerDto> byPriceLessThan = computerService.findByPriceLessThan(persistenceType, priceLessThan);
+    public List<ComputerResponseDto> findBy(ComputerFilter computerFilter) {
+        List<ComputerDto> byPriceLessThan = computerService.findByPriceLessThan(computerFilter);
         return computerMapper.mapResponse(byPriceLessThan);
     }
 
