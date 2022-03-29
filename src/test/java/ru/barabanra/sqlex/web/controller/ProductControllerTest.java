@@ -43,7 +43,7 @@ public class ProductControllerTest {
                 + "?persistenceType=" + persistenceType
                 + "&type=Printer"))
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
 }

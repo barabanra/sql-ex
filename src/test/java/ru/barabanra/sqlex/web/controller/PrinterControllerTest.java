@@ -42,7 +42,7 @@ public class PrinterControllerTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/printers"
                 + "?persistenceType=" + persistenceType))
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
 }

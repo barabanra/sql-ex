@@ -10,6 +10,10 @@
     </appender>
     <logger name="ru.barabanra.sqlex.web.filter.RequestResponseLoggingFilter" level="DEBUG" additivity="false"><appender-ref ref="Console" /></logger>
     <logger name="ru.barabanra.sqlex.SqlExApplication" level="INFO" additivity="false"><appender-ref ref="Console" /></logger>
+    <logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="TRACE" additivity="false"><appender-ref ref="Console" /></logger>
+    <logger name="org.springframework.jdbc.core.JdbcTemplate" level="DEBUG" additivity="false"><appender-ref ref="Console" /></logger>
+    <logger name="org.jooq.tools.LoggerListener" level="DEBUG" additivity="false"><appender-ref ref="Console" /></logger>
+
     <logger name="org.testcontainers" level="ERROR"/>
     <logger name="com.github.dockerjava" level="ERROR"/>
     <logger name="ch.qos.logback" level="ERROR"/>

@@ -26,7 +26,7 @@ public class ComputerController {
     @Operation(description = "Получение компьютеров")
     @GetMapping
     public List<ComputerResponseDto> findBy(ComputerFilter computerFilter) {
-        List<ComputerDto> byPriceLessThan = computerService.findByPriceLessThan(computerFilter);
+        List<ComputerDto> byPriceLessThan = computerService.findBy(computerFilter);
         return computerMapper.mapResponse(byPriceLessThan);
     }
 

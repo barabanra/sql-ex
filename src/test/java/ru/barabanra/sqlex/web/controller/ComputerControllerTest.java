@@ -44,7 +44,7 @@ public class ComputerControllerTest {
                 )
         )
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ComputerControllerTest {
                 )
         )
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class ComputerControllerTest {
                 )
         )
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ComputerControllerTest {
                 )
         )
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class ComputerControllerTest {
                 + "?priceLessThan=500"
                 + "&persistenceType=" + persistenceType))
                 .andExpect(status().isOk())
-                .andExpect(content().json(response));
+                .andExpect(content().json(response, true));
     }
 
 }

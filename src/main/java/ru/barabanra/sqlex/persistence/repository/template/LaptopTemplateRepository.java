@@ -5,11 +5,11 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.barabanra.sqlex.dto.properties.PersistenceType;
-import ru.barabanra.sqlex.dto.request.ComputerFilter;
-import ru.barabanra.sqlex.mapper.ComputerMapper;
-import ru.barabanra.sqlex.persistence.entity.ComputerEntity;
-import ru.barabanra.sqlex.persistence.entity.template.ComputerTemplateEntity;
-import ru.barabanra.sqlex.persistence.repository.ComputerRepository;
+import ru.barabanra.sqlex.dto.request.LaptopFilter;
+import ru.barabanra.sqlex.mapper.LaptopMapper;
+import ru.barabanra.sqlex.persistence.entity.LaptopEntity;
+import ru.barabanra.sqlex.persistence.entity.template.LaptopTemplateEntity;
+import ru.barabanra.sqlex.persistence.repository.LaptopRepository;
 import ru.barabanra.sqlex.utils.SqlFilters;
 
 import java.util.List;
@@ -17,31 +17,32 @@ import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
-public class ComputerTemplateRepositoryImpl implements ComputerRepository {
+public class LaptopTemplateRepository implements LaptopRepository {
 
-    public static final String SIMPLE_SELECT_PC = """
-            SELECT model, speed, hd, price, cd from PC
+    private static final String SELECT_LAPTOP = """
+            SELECT code, PRODUCT.model as model, LAPTOP.model as laptopModel, speed, ram, hd, price, screen, maker, type
+             FROM PRODUCT INNER JOIN LAPTOP ON LAPTOP.model = PRODUCT.model
             """;
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
-    private final ComputerMapper computerMapper;
+    private final LaptopMapper laptopMapper;
 
     @Override
-    public List<ComputerEntity> findAllBy(ComputerFilter computerFilter) {
+    public List<LaptopEntity> findBy(LaptopFilter laptopFilter) {
         SqlFilters sqlFilters = SqlFilters.builder()
-                .in("CD", computerFilter.getCdTypeList())
-                .lt("PRICE", computerFilter.getPriceLessThan())
+                .gt("HD", laptopFilter.getHdMoreThan())
                 .build();
 
-        String query = SIMPLE_SELECT_PC;
+        String query = SELECT_LAPTOP;
 
         if (!sqlFilters.isEmpty()) {
             query = query.concat(" WHERE " + sqlFilters.getPredicate());
         }
+
         return jdbcTemplate.query(query, sqlFilters.getParams(),
-                new BeanPropertyRowMapper<>(ComputerTemplateEntity.class))
+                new BeanPropertyRowMapper<>(LaptopTemplateEntity.class))
                 .stream()
-                .map(computerMapper::map)
+                .map(laptopMapper::mapEntity)
                 .collect(Collectors.toList());
     }
 

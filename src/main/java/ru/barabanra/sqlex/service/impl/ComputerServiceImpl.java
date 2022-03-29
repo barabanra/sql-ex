@@ -28,7 +28,7 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public List<ComputerDto> findByPriceLessThan(ComputerFilter computerFilter) {
+    public List<ComputerDto> findBy(ComputerFilter computerFilter) {
         ComputerRepository computerRepository = computerRepositoryMap.get(computerFilter.getPersistenceType());
         if (computerRepository == null) {
             return new ArrayList<>();

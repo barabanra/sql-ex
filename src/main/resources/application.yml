@@ -1,7 +1,6 @@
 spring:
   application:
     name: sql-ex
-
   jpa:
     properties:
       hibernate:
@@ -9,6 +8,9 @@ spring:
 
   liquibase:
     enabled: false
+
+  main:
+    banner-mode: off
 
 springdoc:
   paths-to-match: /**

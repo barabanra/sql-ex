@@ -25,14 +25,4 @@ public class ComputerJpaEntitySpecification {
         };
     }
 
-    static Specification<ComputerJpaEntity> cdIn(ComputerFilter params) {
-        return (root, criteriaQuery, criteriaBuilder)
-                -> root.get("cd").in(params.getCdTypeList());
-    }
-
-    static Specification<ComputerJpaEntity> priceLessThan(ComputerFilter params) {
-        return (root, criteriaQuery, criteriaBuilder)
-                -> criteriaBuilder.lessThan(root.get("price"), params.getPriceLessThan());
-    }
-
 }

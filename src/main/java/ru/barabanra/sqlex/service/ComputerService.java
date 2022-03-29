@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ComputerService {
 
-    List<ComputerDto> findByPriceLessThan(ComputerFilter computerFilter);
+    List<ComputerDto> findBy(ComputerFilter computerFilter);
 
 }

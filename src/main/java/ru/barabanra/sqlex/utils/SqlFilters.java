@@ -49,10 +49,19 @@ public class SqlFilters {
             return this;
         }
 
-        public Builder lte(String columnName, Number value) {
+        public Builder lt(String columnName, Number value) {
             if (null != value) {
                 String paramName = columnName + "Lte";
                 predicateBuilder.add(columnName + " < " + param(paramName));
+                params.addValue(paramName, value);
+            }
+            return this;
+        }
+
+        public Builder gt(String columnName, Number value) {
+            if (null != value) {
+                var paramName = columnName + "Gt";
+                predicateBuilder.add(columnName + " > " + param(paramName));
                 params.addValue(paramName, value);
             }
             return this;

@@ -1,0 +1,68 @@
+[
+  {
+    "code": 1,
+    "model": 1298,
+    "speed": 350,
+    "ram": 32,
+    "hd": 4,
+    "price": 700.00,
+    "screen": 11,
+    "maker": "A",
+    "type": "Laptop"
+  },
+  {
+    "code": 2,
+    "model": 1321,
+    "speed": 500,
+    "ram": 64,
+    "hd": 8,
+    "price": 970.00,
+    "screen": 12,
+    "maker": "C",
+    "type": "Laptop"
+  },
+  {
+    "code": 3,
+    "model": 1750,
+    "speed": 750,
+    "ram": 128,
+    "hd": 12,
+    "price": 1200.00,
+    "screen": 14,
+    "maker": "B",
+    "type": "Laptop"
+  },
+  {
+    "code": 4,
+    "model": 1298,
+    "speed": 600,
+    "ram": 64,
+    "hd": 10,
+    "price": 1050.00,
+    "screen": 15,
+    "maker": "A",
+    "type": "Laptop"
+  },
+  {
+    "code": 5,
+    "model": 1752,
+    "speed": 750,
+    "ram": 128,
+    "hd": 10,
+    "price": 1150.00,
+    "screen": 14,
+    "maker": "A",
+    "type": "Laptop"
+  },
+  {
+    "code": 6,
+    "model": 1298,
+    "speed": 450,
+    "ram": 64,
+    "hd": 10,
+    "price": 950.00,
+    "screen": 12,
+    "maker": "A",
+    "type": "Laptop"
+  }
+]

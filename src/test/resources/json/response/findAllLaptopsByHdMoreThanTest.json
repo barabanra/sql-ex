@@ -1,0 +1,13 @@
+[
+  {
+    "code": 3,
+    "model": 1750,
+    "speed": 750,
+    "ram": 128,
+    "hd": 12,
+    "price": 1200.00,
+    "screen": 14,
+    "maker": "B",
+    "type": "Laptop"
+  }
+]

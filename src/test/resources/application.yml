@@ -10,6 +10,9 @@ spring:
   liquibase:
     change-log: db/changelog/db.changelog-master.yml
 
+  main:
+    banner-mode: off
+
 db:
   datasource:
     database: postgres
